@@ -15,7 +15,11 @@ Git LFS 免费额度只有 1 GB 存储 + 1 GB/月流量，也装不下。
 
 ## 怎么拿
 
-打开本仓库的 **Releases** 页面，下载这 5 个分卷：
+**下载地址：https://github.com/Catgu0830/5002-Team8-Team_Project/releases/tag/v1.0-evidence**
+
+（或打开本仓库右侧的 **Releases** → 选 `v1.0-evidence`）
+
+共 5 个分卷：
 
 | 分卷 | 大小 | 包含的运行 |
 |---|---:|---|
@@ -27,8 +31,24 @@ Git LFS 免费额度只有 1 GB 存储 + 1 GB/月流量，也装不下。
 
 （`s` 后缀为随机种子；H 为预测长度、L 为输入长度。）
 
-各分卷的 **SHA-256 校验值**记录在 Release 说明与本仓库
-`03_代码与可复现/` 对应的打包脚本输出中；如需重新生成，运行：
+### SHA-256 校验值
+
+下载后建议逐个校验（Windows）：
+
+```powershell
+Get-FileHash memberA_evidence_part1.zip -Algorithm SHA256
+```
+
+| 分卷 | SHA-256 |
+|---|---|
+| `memberA_evidence_part1.zip` | `4d5ab9af9a1cd948e8aff56523410d9253d95ba065b51c7b5565ba60e31780b3` |
+| `memberA_evidence_part2.zip` | `fd6cc14d79cd6970d0a8bdac6970d73f41153884ec6afc25e148f23df07b583a` |
+| `memberA_evidence_part3.zip` | `80b4eb369c2072d5f6a197c7ff3d64b5359b424843c781e731f87ed043596e4a` |
+| `memberA_evidence_part4.zip` | `a86e6428d0d952e467e26f4dbbf98acc269700a274c8a86c37ba5ffb1cb81b1e` |
+| `memberA_evidence_part5.zip` | `ece1701a68d685f63f03a97e2cbf4146893a43294d64de1a7d1f2b902ed9e351` |
+
+> 这五个值已与 GitHub Release 上的附件 digest 逐位比对一致。
+> 如需重新分卷，运行：
 
 ```bash
 python 03_代码与可复现/make_release_zips.py --cap-mb 1800
