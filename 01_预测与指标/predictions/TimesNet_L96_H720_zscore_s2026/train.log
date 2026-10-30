@@ -1,0 +1,73 @@
+[DSC5002-A PATCH P5] fix_seed = 2026
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           L96H720z_s2026      Model:              TimesNet            
+
+[1mData Loader[0m
+  Data:               ETTm2               Root Path:          D:/学习经历/港城硕士/硕士学习/Semester A 2026-27/5002 Exploratory Data Anlys & Visual/Team_project/memberA_timesnet/work/data/processed/v1/continuous
+  Data Path:          ETTm2_raw.csv       Features:           M                   
+  Target:             OT                  Freq:               h                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            96                  Label Len:          48                  
+  Pred Len:           720                 Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             7                   Dec In:             7                   
+  C Out:              7                   d model:            16                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               32                  
+  Moving Avg:         25                  Factor:             3                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        4                   Itr:                1                   
+  Train Epochs:       1                   Batch Size:         32                  
+  Patience:           3                   Learning Rate:      0.0001              
+  Des:                a                   Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+🚀 Lazy Loading: TimesNet ...
+>>>>>>>start training : long_term_forecast_L96H720z_s2026_TimesNet_ETTm2_ftM_sl96_ll48_pl720_dm16_nh8_el2_dl1_df32_expand2_dc4_fc3_ebtimeF_dtTrue_a_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 33745
+val 10801
+test 10801
+	iters: 100, epoch: 1 | loss: 0.5556958
+	speed: 0.8947s/iter; left time: 855.3345s
+	iters: 200, epoch: 1 | loss: 0.6765721
+	speed: 0.2827s/iter; left time: 241.9583s
+	iters: 300, epoch: 1 | loss: 0.5526146
+	speed: 0.2541s/iter; left time: 192.0659s
+	iters: 400, epoch: 1 | loss: 0.8196996
+	speed: 0.2400s/iter; left time: 157.4396s
+	iters: 500, epoch: 1 | loss: 0.2648005
+	speed: 0.2151s/iter; left time: 119.5915s
+	iters: 600, epoch: 1 | loss: 0.3418593
+	speed: 0.2074s/iter; left time: 94.5930s
+	iters: 700, epoch: 1 | loss: 0.2375267
+	speed: 0.2069s/iter; left time: 73.6590s
+	iters: 800, epoch: 1 | loss: 0.6319890
+	speed: 0.2064s/iter; left time: 52.8434s
+	iters: 900, epoch: 1 | loss: 0.4736946
+	speed: 0.2111s/iter; left time: 32.9298s
+	iters: 1000, epoch: 1 | loss: 0.6043279
+	speed: 0.2111s/iter; left time: 11.8220s
+Epoch: 1 cost time: 300.4370129108429
+Epoch: 1, Steps: 1055 | Train Loss: 0.5726169 Vali Loss: 0.2836424 Test Loss: 0.4191765
+Validation loss decreased (inf --> 0.283642).  Saving model ...
+Updating learning rate to 0.0001
+[DSC5002-A PATCH P6] --skip_test: only train+validate, test inference skipped

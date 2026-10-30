@@ -1,0 +1,77 @@
+{
+  "run_metadata": {
+    "schema_version": "1.0",
+    "run_id": "TimesNet_L96_H96_zscore_s2021",
+    "model": "TimesNet",
+    "seed": 2021,
+    "input_length": 96,
+    "horizon": 96,
+    "input_scaling": "zscore",
+    "prediction_space": "zscore",
+    "feature_order": [
+      "HUFL",
+      "HULL",
+      "MUFL",
+      "MULL",
+      "LUFL",
+      "LULL",
+      "OT"
+    ],
+    "evaluation_protocol_sha256": "7e13338732ee2857e2ab323748b7c444659e4ef125e46e1c4c44ceb1fcab26b3",
+    "source_sha256": "db973ca252c6410a30d0469b13d696cf919648d0f3fd588c60f03fdbdbadd1fd",
+    "training_sha256": "84d225389e05ca6f2ac095a8f81d4d1e6390d58fa649254d98bac157bb0fd038",
+    "test_used_for_selection": false,
+    "external_scaling_passes": 1,
+    "loader_source": "raw_continuous",
+    "loader_scale": true,
+    "internal_timesnet_normalization_preserved": true,
+    "code_repository_url": "https://github.com/thuml/Time-Series-Library",
+    "code_commit": "4e938a1767106324dd753b2a44832bf870a0252e",
+    "code_dirty": true,
+    "code_diff_file": "patches.diff",
+    "hyperparameters_file": "hyperparameters.json",
+    "environment_file": "environment.txt",
+    "training_log_file": "train.log",
+    "command_file": "command.txt",
+    "model_artifact_file": "checkpoint.pth",
+    "validation_selection_metric": "common_zscore_mse",
+    "notes": "TimesNet 内部归一化保留；zscore 路径用训练段 StandardScaler 恰好变换一次，minmax 路径用预缩放文件并以 --scale 0 关闭加载器二次缩放。训练与测试分离（--skip_test），测试推理在 seal 之后执行。",
+    "checkpoint_setting": "long_term_forecast_L96H96z_s2021_TimesNet_ETTm2_ftM_sl96_ll48_pl96_dm32_nh8_el2_dl1_df32_expand2_dc4_fc3_ebtimeF_dtTrue_a_0",
+    "checkpoint_model_id": "L96H96z_s2021"
+  },
+  "selection_lock_sha256": "50778d0e36730b30d3787fff240b7572f618276d9a859894926015085495fa1f",
+  "prediction_files_sha256": {
+    "pred.npy": "aa338c3e0e58db29171dd7090ed1c4a0b60263653a3e1448024b695dfdfd8658",
+    "true.npy": "3b22a5a37c8228cb33f1757fb034944c826b53208ac02a34bf8415c2ce2498c2",
+    "origin_rows.npy": "1f7c6b4702470661c7a32051b978cea9a60933448000c56314a175c92fd8f05c"
+  },
+  "configuration_files_sha256": {
+    "hyperparameters.json": "51ab4152f9564b2b24c116032b008e256d7bc83675b79cde527386b7197cf90f",
+    "environment.txt": "967412c92755a0aaaa82e141e121c7adf1019a3d640bfdab178454e2e3a87d5a",
+    "train.log": "76ab45fa6fa4d2d4b5f791cfa8a876dac74022ba6eef566b553b35cac3739cb7",
+    "command.txt": "73b8dc5e13423986153307861b78f983c61683f30d3809ed75ad13072134d4d5",
+    "checkpoint.pth": "7f5898db1e6b42e1981b9c7d18820b8afb1e6c5f986f6ca26f9e0c5efb02de86",
+    "patches.diff": "92608423eb86a6cafc81b7e1c9a71d543beac79195edc15fba6e8ca1e3098414",
+    "run_metadata.json": "6e6659bd992b52421fdee9930d5c897e1d5623188ec7b5a63f57d6476b944267",
+    "origin_rows.npy": "1f7c6b4702470661c7a32051b978cea9a60933448000c56314a175c92fd8f05c",
+    "validation_origin_rows.npy": "932c433a1381bbad5a9d76db4c93249b30fb72b49a1e0f63e77a0270d9d2d7e5"
+  },
+  "evaluation_protocol_sha256": "7e13338732ee2857e2ab323748b7c444659e4ef125e46e1c4c44ceb1fcab26b3",
+  "evaluator_script_sha256": "1700486b488b961ca7dfbc4f3c94aedc90412efee3ce4ace0a5222a9f2aa90fb",
+  "helper_sha256": "33ae3f4e5be4feaf80993d84dba9befce6abedd5d7ee1176efc9a57f045fa6e1",
+  "environment": {
+    "time_hong_kong": "2026-10-28T11:45:56+08:00",
+    "python": "3.10.22",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "packages": {
+      "numpy": "2.0.2",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.6.1",
+      "scipy": "1.13.1",
+      "matplotlib": "3.9.4",
+      "Pillow": "11.3.0"
+    },
+    "bundle_version": "1.0.0"
+  },
+  "limits": "metadata is declared evidence; code must also be reviewed manually; no significance tests or causal attribution"
+}

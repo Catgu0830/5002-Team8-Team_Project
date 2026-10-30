@@ -1,0 +1,20 @@
+# 忽略操作系统与编辑器垃圾
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 忽略 Python 缓存
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# 忽略临时文件
+*.tmp
+*.log.tmp
+~$*
+
+# 本仓库刻意不包含大体积预测张量与模型权重（GitHub 单文件上限 100 MB）
+# 若以后完整数据也要纳入版本控制，请改用 Git LFS 或 GitHub Release
+*.npy
+*.pth
+*.bin

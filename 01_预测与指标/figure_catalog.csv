@@ -1,0 +1,5 @@
+figure_id,title,purpose,png,pdf
+08_01_baseline_horizons,Baseline horizon comparison,仅真实已评估运行；n 是种子数，不是置信区间。不同 H 的完整窗口集合略有不同。,figures/08_01_baseline_horizons.png,figures/08_01_baseline_horizons.pdf
+08_02_timesnet_sensitivity,TimesNet sensitivity,固定其余设置；误差棒为种子间样本标准差，单次运行不画误差棒。,figures/08_02_timesnet_sensitivity.png,figures/08_02_timesnet_sensitivity.pdf
+08_03_variable_error_H336,Per-variable error H336,跨变量使用共同训练标准差；须结合种子完成情况解读。,figures/08_03_variable_error_H336.png,figures/08_03_variable_error_H336.pdf
+08_04_lead_profile_H336,Lead-wise error H336,各 lead 对相同起报集合评分；仅聚合真实通过评估的运行。,figures/08_04_lead_profile_H336.png,figures/08_04_lead_profile_H336.pdf

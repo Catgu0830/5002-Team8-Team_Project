@@ -1,0 +1,4 @@
+file: scripts/member_b_next_common.py
+sha256_before: edc2453a4dc7e649483663c4dfda4100ff695ee8d81b3653f59e0256fd36e97f
+sha256_after: 33ae3f4e5be4feaf80993d84dba9befce6abedd5d7ee1176efc9a57f045fa6e1
+change: TimesNet seeds [2026,2027,2028] -> [2021,2026,2027] (XGBoost/Informer unchanged)

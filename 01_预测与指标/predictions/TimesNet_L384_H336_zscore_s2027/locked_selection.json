@@ -1,0 +1,18 @@
+{
+  "status": "LOCKED_BEFORE_TEST_EXPORT",
+  "time_hong_kong": "2026-10-28T22:56:42+08:00",
+  "configuration_inputs_sha256": {
+    "hyperparameters.json": "98a54647776344b878ee6d96945a83d8bf3d37d70fdeb2ff66600ddceb4797d9",
+    "environment.txt": "b876fab36856edd79f5863478c0676b91a51dc50ddf1a084aa9f65859175e553",
+    "train.log": "6dfe371faf84ddb9b96d7fef795d2576043bc6f9562113de01b3509e7bf00fce",
+    "command.txt": "b7020563e6146f78c9202cf6addd6ecbb3a17c6747f2be47ae31d71869f39ae4",
+    "checkpoint.pth": "c58d6f69eac49e21739df0becce292f82d2309e378be3bd3ffce3eec92bdb2d6",
+    "patches.diff": "92608423eb86a6cafc81b7e1c9a71d543beac79195edc15fba6e8ca1e3098414",
+    "run_metadata.json": "0748b1139595868b68f5f3099b746991518a010488b42740ccea85709232ceb0",
+    "origin_rows.npy": "e8a34f7bd8b163b8764679f670f87e1da8253e7ea59c0945e6e47cccfa43f562",
+    "validation_origin_rows.npy": "b4ec22785dc9aa956f06ee735f77d07077836781e19e38624db69f922b4ead81"
+  },
+  "validation_score_sha256": "a2137e5c98099d758821eb7f2bb68a943d8bd37d746f5bbf2ba1a37881cdf196",
+  "selection_metric": "common_zscore_mse",
+  "validation_score": 0.2457774694981298
+}
