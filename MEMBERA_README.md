@@ -49,8 +49,10 @@ TimesNet 在 ETTm2 上的**复现**与**两组敏感性实验**的完整交付�
 208 MB，共 60 个文件超限。
 
 - 若只需要评审指标、图表与代码：**这个仓库足够**
-- 若需要独立复算（成员 B 重新跑评分）：需要**全量包（约 8.4 GB）**，
-  见 `00_交付说明.md` 第 5.2 节的说明
+- 若需要独立复算（成员 B 重新跑评分）：下载 **Release 附件**
+  `v1.0-evidence`（5 个分卷，压缩后 4.29 GB）——
+  https://github.com/Catgu0830/5002-Team8-Team_Project/releases/tag/v1.0-evidence
+  详细步骤、分卷内容与 SHA-256 见 [`DATA_ACCESS.md`](DATA_ACCESS.md)
 
 ---
 
