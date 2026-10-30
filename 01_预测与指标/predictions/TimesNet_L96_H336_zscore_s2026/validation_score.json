@@ -1,0 +1,37 @@
+{
+  "run_id": "TimesNet_L96_H336_zscore_s2026",
+  "model": "TimesNet",
+  "seed": 2026,
+  "split": "validation",
+  "input_length": 96,
+  "horizon": 336,
+  "input_scaling": "zscore",
+  "origins": 11185,
+  "forecast_pairs_per_variable": 3758160,
+  "scalar_predictions": 26307120,
+  "mse_common_zscore": 0.21705616818465512,
+  "mae_common_zscore": 0.31911611109323534,
+  "ot_mae_raw": 4.02384128378441,
+  "ot_rmse_raw": 5.400547876039685,
+  "exported_truth_max_abs_error_raw": 1.3381506462906145e-06,
+  "status": "PASS",
+  "weighting": "every origin-lead-variable triple once; target timestamps may repeat",
+  "time_hong_kong": "2026-10-28T14:57:47+08:00",
+  "selection_metric": "common_zscore_mse",
+  "configuration_inputs_sha256": {
+    "hyperparameters.json": "865ee18e17686a1d830a055f4a557f0dff8c5253acc15d1df59c302460b2b28e",
+    "environment.txt": "5d2278e68a65693bc70a749cd6b97841896279ffc498b583b779beb3d0ec14c4",
+    "train.log": "58875e490e374ab65ab0b87b6b66987fd556210b8c86257175e4f205352ae63c",
+    "command.txt": "85c4b6ba91f8eeaeea997f416f60b4fd4c3538efe56813427d75e758a49e3219",
+    "checkpoint.pth": "db5d9ace887eca25d10a6c25d005d4476e899f1685bd681ec0e9f121e71df1d5",
+    "patches.diff": "92608423eb86a6cafc81b7e1c9a71d543beac79195edc15fba6e8ca1e3098414",
+    "run_metadata.json": "09f1fcfcfacfa95a239cf054901f8e3d53f9895a000756cd7738213d93e86cad",
+    "origin_rows.npy": "e8a34f7bd8b163b8764679f670f87e1da8253e7ea59c0945e6e47cccfa43f562",
+    "validation_origin_rows.npy": "b4ec22785dc9aa956f06ee735f77d07077836781e19e38624db69f922b4ead81"
+  },
+  "prediction_inputs_sha256": {
+    "validation_pred.npy": "ee64d2d36407bc2c3c36b000a6d7d4ca742ce4197450f1b76c34498831bf20bc",
+    "validation_true.npy": "6362403417cc96252aec68bad44dd95b910c57b88bad3d7e2a8cd3724881943c",
+    "validation_origin_rows.npy": "b4ec22785dc9aa956f06ee735f77d07077836781e19e38624db69f922b4ead81"
+  }
+}

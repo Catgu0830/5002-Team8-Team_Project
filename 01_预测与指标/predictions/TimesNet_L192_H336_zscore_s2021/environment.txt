@@ -1,0 +1,21 @@
+=== 运行环境（成员 A / TimesNet / ETTm2）===
+time_hong_kong : 2026-10-28T18:03:26+08:00
+python         : 3.10.22  (C:\Users\lenovo\.conda\envs\5002\python.exe)
+platform       : Windows-10-10.0.26100-SP0
+machine        : AMD64
+torch          : 2.7.1+cu118
+torch.cuda     : 11.8
+cuda_available : True
+gpu[0]        : NVIDIA GeForce RTX 3060 Laptop GPU, 6.00 GiB, cc 8.6
+
+--- 关键依赖版本 ---
+numpy         : 2.0.2
+pandas        : 2.3.3
+scikit-learn  : 1.6.1
+scipy         : 1.13.1
+matplotlib    : 3.9.4
+tqdm          : 4.70.0
+
+--- 运行参数补充 ---
+root_path     : D:\学习经历\港城硕士\硕士学习\Semester A 2026-27\5002 Exploratory Data Anlys & Visual\Team_project\memberA_timesnet\work\data\processed\v1\continuous
+repo          : D:\学习经历\港城硕士\硕士学习\Semester A 2026-27\5002 Exploratory Data Anlys & Visual\Team_project\_tsl

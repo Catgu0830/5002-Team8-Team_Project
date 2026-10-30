@@ -1,0 +1,169 @@
+[DSC5002-A PATCH P5] fix_seed = 2027
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           L96H96z_s2027       Model:              TimesNet            
+
+[1mData Loader[0m
+  Data:               ETTm2               Root Path:          D:/学习经历/港城硕士/硕士学习/Semester A 2026-27/5002 Exploratory Data Anlys & Visual/Team_project/memberA_timesnet/work/data/processed/v1/continuous
+  Data Path:          ETTm2_raw.csv       Features:           M                   
+  Target:             OT                  Freq:               h                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            96                  Label Len:          48                  
+  Pred Len:           96                  Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             7                   Dec In:             7                   
+  C Out:              7                   d model:            32                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               32                  
+  Moving Avg:         25                  Factor:             3                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        4                   Itr:                1                   
+  Train Epochs:       10                  Batch Size:         32                  
+  Patience:           3                   Learning Rate:      0.0001              
+  Des:                a                   Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+🚀 Lazy Loading: TimesNet ...
+>>>>>>>start training : long_term_forecast_L96H96z_s2027_TimesNet_ETTm2_ftM_sl96_ll48_pl96_dm32_nh8_el2_dl1_df32_expand2_dc4_fc3_ebtimeF_dtTrue_a_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 34369
+val 11425
+test 11425
+	iters: 100, epoch: 1 | loss: 0.2206499
+	speed: 0.5524s/iter; left time: 5883.8482s
+	iters: 200, epoch: 1 | loss: 0.2730314
+	speed: 0.1434s/iter; left time: 1513.4758s
+	iters: 300, epoch: 1 | loss: 0.1737352
+	speed: 0.1363s/iter; left time: 1424.4798s
+	iters: 400, epoch: 1 | loss: 0.2439167
+	speed: 0.1585s/iter; left time: 1640.2300s
+	iters: 500, epoch: 1 | loss: 0.2658669
+	speed: 0.1765s/iter; left time: 1808.8639s
+	iters: 600, epoch: 1 | loss: 0.2981018
+	speed: 0.1483s/iter; left time: 1504.8862s
+	iters: 700, epoch: 1 | loss: 0.1688381
+	speed: 0.1473s/iter; left time: 1480.1618s
+	iters: 800, epoch: 1 | loss: 0.1821433
+	speed: 0.1428s/iter; left time: 1421.2253s
+	iters: 900, epoch: 1 | loss: 0.2625457
+	speed: 0.1416s/iter; left time: 1394.4820s
+	iters: 1000, epoch: 1 | loss: 0.1942928
+	speed: 0.1403s/iter; left time: 1368.0933s
+Epoch: 1 cost time: 194.9345817565918
+Epoch: 1, Steps: 1075 | Train Loss: 0.2359562 Vali Loss: 0.1275994 Test Loss: 0.1838368
+Validation loss decreased (inf --> 0.127599).  Saving model ...
+Updating learning rate to 0.0001
+	iters: 100, epoch: 2 | loss: 0.1654713
+	speed: 1.5887s/iter; left time: 15213.5572s
+	iters: 200, epoch: 2 | loss: 0.2020428
+	speed: 0.1383s/iter; left time: 1310.4864s
+	iters: 300, epoch: 2 | loss: 0.1864944
+	speed: 0.1589s/iter; left time: 1489.4041s
+	iters: 400, epoch: 2 | loss: 0.1077190
+	speed: 0.1588s/iter; left time: 1473.1945s
+	iters: 500, epoch: 2 | loss: 0.2082411
+	speed: 0.1514s/iter; left time: 1389.1490s
+	iters: 600, epoch: 2 | loss: 0.1537680
+	speed: 0.1515s/iter; left time: 1374.9286s
+	iters: 700, epoch: 2 | loss: 0.3566009
+	speed: 0.1507s/iter; left time: 1352.8293s
+	iters: 800, epoch: 2 | loss: 0.1188832
+	speed: 0.1421s/iter; left time: 1260.9539s
+	iters: 900, epoch: 2 | loss: 0.1395288
+	speed: 0.1441s/iter; left time: 1264.6701s
+	iters: 1000, epoch: 2 | loss: 0.1176499
+	speed: 0.1465s/iter; left time: 1271.0655s
+Epoch: 2 cost time: 190.17835998535156
+Epoch: 2, Steps: 1075 | Train Loss: 0.1975115 Vali Loss: 0.1265894 Test Loss: 0.1879594
+Validation loss decreased (0.127599 --> 0.126589).  Saving model ...
+Updating learning rate to 5e-05
+	iters: 100, epoch: 3 | loss: 0.3113661
+	speed: 1.8138s/iter; left time: 15419.3848s
+	iters: 200, epoch: 3 | loss: 0.1074658
+	speed: 0.1719s/iter; left time: 1444.3302s
+	iters: 300, epoch: 3 | loss: 0.1494685
+	speed: 0.3064s/iter; left time: 2543.5508s
+	iters: 400, epoch: 3 | loss: 0.1798498
+	speed: 0.1649s/iter; left time: 1352.6782s
+	iters: 500, epoch: 3 | loss: 0.0857230
+	speed: 0.1555s/iter; left time: 1259.7770s
+	iters: 600, epoch: 3 | loss: 0.2967895
+	speed: 0.1584s/iter; left time: 1267.0699s
+	iters: 700, epoch: 3 | loss: 0.1401410
+	speed: 0.1517s/iter; left time: 1198.5774s
+	iters: 800, epoch: 3 | loss: 0.0824220
+	speed: 0.1556s/iter; left time: 1213.7310s
+	iters: 900, epoch: 3 | loss: 0.2283114
+	speed: 0.1557s/iter; left time: 1198.7646s
+	iters: 1000, epoch: 3 | loss: 0.0975232
+	speed: 0.1933s/iter; left time: 1469.1036s
+Epoch: 3 cost time: 234.1163032054901
+Epoch: 3, Steps: 1075 | Train Loss: 0.1821591 Vali Loss: 0.1278688 Test Loss: 0.1900987
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 2.5e-05
+	iters: 100, epoch: 4 | loss: 0.2301494
+	speed: 1.5977s/iter; left time: 11864.6735s
+	iters: 200, epoch: 4 | loss: 0.1112874
+	speed: 0.1570s/iter; left time: 1150.0049s
+	iters: 300, epoch: 4 | loss: 0.1718482
+	speed: 0.1965s/iter; left time: 1420.1196s
+	iters: 400, epoch: 4 | loss: 0.2075362
+	speed: 0.2032s/iter; left time: 1447.7936s
+	iters: 500, epoch: 4 | loss: 0.2262258
+	speed: 0.2139s/iter; left time: 1503.0987s
+	iters: 600, epoch: 4 | loss: 0.1058315
+	speed: 0.2109s/iter; left time: 1460.9831s
+	iters: 700, epoch: 4 | loss: 0.1157011
+	speed: 0.1909s/iter; left time: 1302.7953s
+	iters: 800, epoch: 4 | loss: 0.4077848
+	speed: 0.1904s/iter; left time: 1280.5372s
+	iters: 900, epoch: 4 | loss: 0.1442371
+	speed: 0.1945s/iter; left time: 1289.0399s
+	iters: 1000, epoch: 4 | loss: 0.1530295
+	speed: 0.2019s/iter; left time: 1317.5585s
+Epoch: 4 cost time: 237.05046701431274
+Epoch: 4, Steps: 1075 | Train Loss: 0.1753482 Vali Loss: 0.1275800 Test Loss: 0.1887398
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 1.25e-05
+	iters: 100, epoch: 5 | loss: 0.1663180
+	speed: 1.7432s/iter; left time: 11071.0492s
+	iters: 200, epoch: 5 | loss: 0.1651409
+	speed: 0.1445s/iter; left time: 903.4033s
+	iters: 300, epoch: 5 | loss: 0.1439997
+	speed: 0.1708s/iter; left time: 1050.4433s
+	iters: 400, epoch: 5 | loss: 0.2002600
+	speed: 0.1930s/iter; left time: 1167.7581s
+	iters: 500, epoch: 5 | loss: 0.2128796
+	speed: 0.1794s/iter; left time: 1067.6982s
+	iters: 600, epoch: 5 | loss: 0.2899843
+	speed: 0.1567s/iter; left time: 916.6071s
+	iters: 700, epoch: 5 | loss: 0.1127435
+	speed: 0.1598s/iter; left time: 918.8433s
+	iters: 800, epoch: 5 | loss: 0.1342679
+	speed: 0.1616s/iter; left time: 912.9411s
+	iters: 900, epoch: 5 | loss: 0.1584114
+	speed: 0.1624s/iter; left time: 901.4011s
+	iters: 1000, epoch: 5 | loss: 0.1885873
+	speed: 0.1470s/iter; left time: 801.0274s
+Epoch: 5 cost time: 209.0802674293518
+Epoch: 5, Steps: 1075 | Train Loss: 0.1717707 Vali Loss: 0.1276660 Test Loss: 0.1907794
+EarlyStopping counter: 3 out of 3
+Early stopping
+[DSC5002-A PATCH P6] --skip_test: only train+validate, test inference skipped

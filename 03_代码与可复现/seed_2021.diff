@@ -1,0 +1,21 @@
+--- a/scripts/member_b_next_common.py
++++ b/scripts/member_b_next_common.py
+@@ -122,14 +122,15 @@
+ def experiment_plan():
+     rows=[]
+     for model in ['ARIMA','XGBoost','Informer','TimesNet']:
+-        seeds=[None] if model=='ARIMA' else [2026,2027,2028]
++        # [DSC5002-A SEED-2021] TimesNet 换用 2021（官方 run.py 写死的种子），与论文同条件
++        seeds=[None] if model=='ARIMA' else ([2021,2026,2027] if model=='TimesNet' else [2026,2027,2028])
+         for h in [96,192,336,720]:
+             for seed in seeds:
+                 rows.append({'model':model,'seed':'deterministic' if seed is None else seed,'input_length':96 if model!='ARIMA' else 0,
+                              'horizon':h,'input_scaling':'zscore','experiment':'baseline','owner':'A' if model=='TimesNet' else 'C'})
+     for length in [192,384]:
+-        for seed in [2026,2027,2028]: rows.append({'model':'TimesNet','seed':seed,'input_length':length,'horizon':336,'input_scaling':'zscore','experiment':'input_length','owner':'A'})
+-    for seed in [2026,2027,2028]: rows.append({'model':'TimesNet','seed':seed,'input_length':96,'horizon':336,'input_scaling':'minmax','experiment':'scaling','owner':'A'})
++        for seed in [2021,2026,2027]: rows.append({'model':'TimesNet','seed':seed,'input_length':length,'horizon':336,'input_scaling':'zscore','experiment':'input_length','owner':'A'})
++    for seed in [2021,2026,2027]: rows.append({'model':'TimesNet','seed':seed,'input_length':96,'horizon':336,'input_scaling':'minmax','experiment':'scaling','owner':'A'})
+     for r in rows:
+         r['run_id']=f"{r['model']}_L{r['input_length']}_H{r['horizon']}_{r['input_scaling']}_s{r['seed']}"
+         r['status']='PENDING'

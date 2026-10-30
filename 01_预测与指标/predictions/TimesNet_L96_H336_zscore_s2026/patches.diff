@@ -1,0 +1,140 @@
+--- a/data_provider/data_factory.py
++++ b/data_provider/data_factory.py
+@@ -74,6 +74,7 @@
+             target=args.target,
+             timeenc=timeenc,
+             freq=freq,
++            scale=bool(getattr(args, 'scale', 1)),  # [DSC5002-A PATCH P7] 预缩放数据须关闭二次缩放
+             seasonal_patterns=args.seasonal_patterns
+         )
+         print(flag, len(data_set))
+--- a/data_provider/data_loader.py
++++ b/data_provider/data_loader.py
+@@ -9,11 +9,23 @@
+ from utils.timefeatures import time_features
+ from data_provider.m4 import M4Dataset, M4Meta
+ from data_provider.uea import subsample, interpolate_missing, Normalizer
+-from sktime.datasets import load_from_tsfile_to_dataframe
++try:  # [DSC5002-A PATCH P1] 惰性依赖：只有 UEAloader（UCR/UEA 分类）需要 sktime
++    from sktime.datasets import load_from_tsfile_to_dataframe
++except ImportError:
++    def load_from_tsfile_to_dataframe(*_a, **_k):
++        raise ImportError('UEAloader 需要 sktime；本项目只做 ETT 预测，无需安装。')
+ import warnings
+ from utils.augmentation import run_augmentation_single
+-from datasets import load_dataset
+-from huggingface_hub import hf_hub_download
++try:  # [DSC5002-A PATCH P2] 惰性依赖：仅当本地 CSV 缺失时回退 HuggingFace
++    from datasets import load_dataset
++except ImportError:
++    def load_dataset(*_a, **_k):
++        raise ImportError('本地 CSV 缺失时会回退 HuggingFace，需要 datasets。')
++try:  # [DSC5002-A PATCH P2] 同上
++    from huggingface_hub import hf_hub_download
++except ImportError:
++    def hf_hub_download(*_a, **_k):
++        raise ImportError('本地 CSV 缺失时需要 huggingface_hub。')
+ warnings.filterwarnings('ignore')
+ 
+ HUGGINGFACE_REPO = "thuml/Time-Series-Library"
+--- a/data_provider/m4.py
++++ b/data_provider/m4.py
+@@ -23,14 +23,21 @@
+ 
+ import numpy as np
+ import pandas as pd
+-import patoolib
++try:  # [DSC5002-A PATCH P3] 惰性依赖：只有 M4 数据集需要 patoolib
++    import patoolib
++except ImportError:
++    patoolib = None
+ from tqdm import tqdm
+ import logging
+ import os
+ import pathlib
+ import sys
+ from urllib import request
+-from huggingface_hub import hf_hub_download
++try:  # [DSC5002-A PATCH P3] 同上
++    from huggingface_hub import hf_hub_download
++except ImportError:
++    def hf_hub_download(*_a, **_k):
++        raise ImportError('M4 数据下载需要 huggingface_hub。')
+ 
+ HUGGINGFACE_REPO = "thuml/Time-Series-Library"
+ 
+--- a/run.py
++++ b/run.py
+@@ -7,10 +7,10 @@
+ import numpy as np
+ 
+ if __name__ == '__main__':
+-    fix_seed = 2021
+-    random.seed(fix_seed)
+-    torch.manual_seed(fix_seed)
+-    np.random.seed(fix_seed)
++    # [DSC5002-A PATCH P5] 官方把随机种子写死为 2021，没有命令行入口；
++    # 成员 B 的数据协议要求 2026/2027/2028 三个种子。
++    # 改为 --fix_seed 传参（默认仍 2021，不打补丁时行为与原版一致），
++    # 实际播种挪到 parse_args 之后，确保在建模与取数之前生效。
+ 
+     parser = argparse.ArgumentParser(description='TimesNet')
+ 
+@@ -18,6 +18,9 @@
+     parser.add_argument('--task_name', type=str, required=True, default='long_term_forecast',
+                         help='task name, options:[long_term_forecast, short_term_forecast, imputation, classification, anomaly_detection]')
+     parser.add_argument('--is_training', type=int, required=True, default=1, help='status')
++    parser.add_argument('--skip_test', action='store_true',
++                        help='[DSC5002-A PATCH P6] train+validate only; '
++                             'run test later with --is_training 0')
+     parser.add_argument('--model_id', type=str, required=True, default='test', help='model id')
+     parser.add_argument('--model', type=str, required=True, default='Autoformer',
+                         help='model name, options: [Autoformer, Transformer, TimesNet]')
+@@ -29,6 +32,10 @@
+     parser.add_argument('--features', type=str, default='M',
+                         help='forecasting task, options:[M, S, MS]; M:multivariate predict multivariate, S:univariate predict univariate, MS:multivariate predict univariate')
+     parser.add_argument('--target', type=str, default='OT', help='target feature in S or MS task')
++    parser.add_argument('--scale', type=int, default=1,
++                        help='[DSC5002-A PATCH P7] 1=loader applies the training-fit scaler '
++                             '(zscore path); 0=pre-scaled input, disable the loader scaler '
++                             '(minmax path). TimesNet internal normalization stays on.')
+     parser.add_argument('--freq', type=str, default='h',
+                         help='freq for time features encoding, options:[s:secondly, t:minutely, h:hourly, d:daily, b:business days, w:weekly, m:monthly], you can also use more detailed freq like 15min or 3h')
+     parser.add_argument('--checkpoints', type=str, default='./checkpoints/', help='location of model checkpoints')
+@@ -156,7 +163,19 @@
+     parser.add_argument('--top_p', type=float, default=0.5, help='Dynamic Routing in MoE')
+     parser.add_argument('--pos', type=int, choices=[0, 1], default=1, help='Positional Embedding. Set pos to 0 or 1')
+ 
++    parser.add_argument('--fix_seed', type=int, default=2021,
++                        help='[DSC5002-A PATCH P5] random seed; official hardcodes 2021')
+     args = parser.parse_args()
++
++    # [DSC5002-A PATCH P5] 在模型构建与数据加载之前播种
++    fix_seed = args.fix_seed
++    random.seed(fix_seed)
++    torch.manual_seed(fix_seed)
++    np.random.seed(fix_seed)
++    if torch.cuda.is_available():
++        torch.cuda.manual_seed_all(fix_seed)
++    print(f'[DSC5002-A PATCH P5] fix_seed = {fix_seed}')
++
+     if torch.cuda.is_available() and args.use_gpu:
+         args.device = torch.device('cuda:{}'.format(args.gpu))
+         print('Using GPU')
+@@ -234,8 +253,14 @@
+             print('>>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>'.format(setting))
+             exp.train(setting)
+ 
+-            print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
+-            exp.test(setting)
++            # [DSC5002-A PATCH P6] B 的协议要求 seal 之后才允许测试推理。
++            # 训练完不自动跑测试；测试留到封存后以 --is_training 0 单独执行。
++            if getattr(args, 'skip_test', False):
++                print('[DSC5002-A PATCH P6] --skip_test: '
++                      'only train+validate, test inference skipped')
++            else:
++                print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
++                exp.test(setting)
+             if args.use_gpu:
+                 if args.gpu_type == 'mps':
+                     torch.backends.mps.empty_cache()
