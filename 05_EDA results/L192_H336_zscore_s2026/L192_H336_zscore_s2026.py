@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 # ----------------------- Configuration ------------------------------
 LEAD_FILE  = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2026/metrics_by_lead.csv'
 ERR_FILE   = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2026/fixed_lead_errors.csv'      # note: no year suffix for s2026
-HOUR_FILE  = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2021/metrics_by_hour.csv'     
-STRAT_FILE = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2021/stratified_metrics.csv'  
+HOUR_FILE  = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2026/metrics_by_hour.csv'     
+STRAT_FILE = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2026/stratified_metrics.csv'  
 VARS = ['HUFL', 'HULL', 'LUFL', 'LULL', 'MUFL', 'MULL', 'OT']
 SETTING = 'L192-H336-zscore, seed 2026'
 
