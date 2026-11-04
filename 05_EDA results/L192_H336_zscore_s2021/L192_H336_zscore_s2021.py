@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ----------------------- Configuration ------------------------------
-HOUR_FILE  = 'metrics_by_hour(1).csv'      # note: "(1)" in filename
+HOUR_FILE  = '01_预测/metrics_by_hour.csv'      
 STRAT_FILE = 'stratified_metrics.csv'
 VARS = ['HUFL', 'HULL', 'LUFL', 'LULL', 'MUFL', 'MULL', 'OT']
 OUT_INTRADAY = 'intraday_error_profile.png'
