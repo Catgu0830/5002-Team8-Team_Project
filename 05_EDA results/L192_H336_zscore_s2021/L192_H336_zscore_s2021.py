@@ -7,8 +7,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ----------------------- Configuration ------------------------------
-HOUR_FILE  = '01_预测/metrics_by_hour.csv'      
-STRAT_FILE = 'stratified_metrics.csv'
+HOUR_FILE  = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2021/metrics_by_hour.csv'      
+STRAT_FILE = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2021/stratified_metrics.csv'
 VARS = ['HUFL', 'HULL', 'LUFL', 'LULL', 'MUFL', 'MULL', 'OT']
 OUT_INTRADAY = 'intraday_error_profile.png'
 OUT_STRAT    = 'stratified_error_layers.png'
