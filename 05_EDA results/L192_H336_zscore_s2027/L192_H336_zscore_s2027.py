@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 
 # ----------------------- Configuration ------------------------------
 VARS = ['HUFL', 'HULL', 'LUFL', 'LULL', 'MUFL', 'MULL', 'OT']
-LEAD_FILE  = 'metrics_by_lead.csv'           
-ERR_FILE   = 'fixed_lead_errors.csv'     
-HOUR_FILE  = 'metrics_by_hour.csv'        
-STRAT_FILE = 'stratified_metrics.csv'     
+LEAD_FILE  = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2027/metrics_by_lead.csv'           
+ERR_FILE   = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2027/fixed_lead_errors.csv'     
+HOUR_FILE  = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2027/metrics_by_hour.csv'        
+STRAT_FILE = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2027/stratified_metrics.csv'     
 SETTING    = 'L192-H336-zscore, seed 2027'
 
 lead_df  = pd.read_csv(LEAD_FILE)
