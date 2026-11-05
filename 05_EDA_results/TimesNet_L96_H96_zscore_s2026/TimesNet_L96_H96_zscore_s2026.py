@@ -145,8 +145,9 @@ plt.show()
 # =====================================================================
 # Summary statistics for the report
 # =====================================================================
-print('[lead growth] MSE increase lead1->lead336 by variable (%):')
-print(((mse_piv.loc[336] - mse_piv.loc[1]) / mse_piv.loc[1] * 100).round(1)
+LAST_LEAD = int(mse_piv.index.max()) 
+print('[lead growth] MSE increase lead1->lead{LAST_LEAD} by variable (%):')
+print(((mse_piv.loc[LAST_LEAD] - mse_piv.loc[1]) / mse_piv.loc[1] * 100).round(1)
       .sort_values(ascending=False).to_string())
 print(f'\n[ACF@lag96] available leads = {LEADS}')
 print(pd.DataFrame([{'lead': L, **{v: round(acf_store[(L, v)][96], 3) for v in VARS}}
