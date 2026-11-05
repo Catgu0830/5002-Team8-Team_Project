@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 
 # ----------------------- Configuration ------------------------------
 VARS = ['HUFL', 'HULL', 'LUFL', 'LULL', 'MUFL', 'MULL', 'OT']
-LEAD_FILE  = '/01_预测与指标/runs/TimesNet_L384_H336_zscore_s2021/metrics_by_lead.csv'           
-ERR_FILE   = '/01_预测与指标/runs/TimesNet_L384_H336_zscore_s2021/fixed_lead_errors.csv'     
-HOUR_FILE  = '/01_预测与指标/runs/TimesNet_L384_H336_zscore_s2021/metrics_by_hour.csv'        
-STRAT_FILE = '/01_预测与指标/runs/TimesNet_L384_H336_zscore_s2021/stratified_metrics.csv'     
+LEAD_FILE  = 'https://raw.githubusercontent.com/Catgu0830/5002-Team8-Team_Project/refs/heads/main/01_%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8C%87%E6%A0%87/runs/TimesNet_L384_H336_zscore_s2021/metrics_by_lead.csv'           
+ERR_FILE   = 'https://raw.githubusercontent.com/Catgu0830/5002-Team8-Team_Project/refs/heads/main/01_%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8C%87%E6%A0%87/runs/TimesNet_L384_H336_zscore_s2021/fixed_lead_errors.csv'     
+HOUR_FILE  = 'https://raw.githubusercontent.com/Catgu0830/5002-Team8-Team_Project/refs/heads/main/01_%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8C%87%E6%A0%87/runs/TimesNet_L384_H336_zscore_s2021/metrics_by_hour.csv'        
+STRAT_FILE = 'https://raw.githubusercontent.com/Catgu0830/5002-Team8-Team_Project/refs/heads/main/01_%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8C%87%E6%A0%87/runs/TimesNet_L384_H336_zscore_s2021/stratified_metrics.csv'       
 SETTING    = 'L384-H336-zscore, seed 2021'
 
 lead_df  = pd.read_csv(LEAD_FILE)
