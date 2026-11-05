@@ -7,11 +7,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ----------------------- Configuration ------------------------------
-HOUR_FILE  = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2021/metrics_by_hour.csv'      
-STRAT_FILE = '/01_预测与指标/runs/TimesNet_L192_H336_zscore_s2021/stratified_metrics.csv'
 VARS = ['HUFL', 'HULL', 'LUFL', 'LULL', 'MUFL', 'MULL', 'OT']
-OUT_INTRADAY = 'intraday_error_profile.png'
-OUT_STRAT    = 'stratified_error_layers.png'
+LEAD_FILE  = 'https://raw.githubusercontent.com/Catgu0830/5002-Team8-Team_Project/refs/heads/main/01_%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8C%87%E6%A0%87/runs/TimesNet_L192_H336_zscore_s2021/metrics_by_lead.csv'           
+ERR_FILE   = 'https://raw.githubusercontent.com/Catgu0830/5002-Team8-Team_Project/refs/heads/main/01_%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8C%87%E6%A0%87/runs/TimesNet_L192_H336_zscore_s2021/fixed_lead_errors.csv'     
+HOUR_FILE  = 'https://raw.githubusercontent.com/Catgu0830/5002-Team8-Team_Project/refs/heads/main/01_%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8C%87%E6%A0%87/runs/TimesNet_L192_H336_zscore_s2021/metrics_by_hour.csv'        
+STRAT_FILE = 'https://raw.githubusercontent.com/Catgu0830/5002-Team8-Team_Project/refs/heads/main/01_%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8C%87%E6%A0%87/runs/TimesNet_L192_H336_zscore_s2021/stratified_metrics.csv'     
+SETTING    = 'L192_H336_zscore, seed=2021'
 
 hour_df  = pd.read_csv(HOUR_FILE)
 strat_df = pd.read_csv(STRAT_FILE)
